@@ -1,7 +1,8 @@
 {:paths ["src" "resources" "target"]
  :deps
  {org.clojure/clojurescript {:mvn/version "1.10.520"}
-  reagent {:mvn/version "0.9.1"}}
+  reagent {:mvn/version "0.9.1"}
+  alandipert/storage-atom {:mvn/version "2.0.1"}}
  :aliases
  {:shadow-cljs
   {:main-opts ["-m" "shadow.cljs.devtools.cli"]
