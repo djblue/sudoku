@@ -2,6 +2,6 @@
 
 ## development
 
-    clojure -A:shadow-cljs cljs-repl watch app
+    clojure -A:shadow-cljs watch app
 
     :CljEval (shadow/repl :app)
