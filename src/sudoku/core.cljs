@@ -83,18 +83,15 @@
                (remove-value remaining-values [k %])) values)))))
 
 (defn generate-new-board []
-  (into {}
-        (random-sample
-         0.45
-         (solver
-          (rand-nth
-           [{{:row 8 :column 8} 8}
-            {{:row 4 :column 4} 4}
-            {{:row 3 :column 3} 3}
-            {{:row 2 :column 2} 2}
-            {{:row 1 :column 1} 1}
-            {{:row 5 :column 5} 5}
-            {{:row 0 :column 0} 1}])))))
+  (->>
+    (for [row     (range 9)
+          column  (range 9)
+          value   (map inc (range 9))]
+      {{:row row :column column} value})
+   rand-nth
+   solver
+   (random-sample 0.40)
+   (into {})))
 
 (defn grid [n m component]
   [:table
