@@ -15,6 +15,9 @@ install:
 script:
   - mkdir gh-pages
   - clojure -m sudoku.build > gh-pages/index.html
+branches:
+  only:
+  - master
 deploy:
   provider: pages
   skip-cleanup: true
