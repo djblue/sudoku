@@ -102,7 +102,7 @@
     {:width "100%"
      :height "100%"
      :border-collapse :collapse
-     :border "2px solid #344861"}}
+     :border "2px solid #1c1c1e"}}
    [:tbody
     (for [n (range n)]
       [:tr
@@ -150,15 +150,17 @@
            :width "100%"
            :height "100%"
            :text-align :center
-           :color "#344861"
+           :color "#1c1c1e"
+           :border "1px solid #1c1c1e"
            :font-size "3rem"}
           (when selected?
             {:font-weight :bold})
           (when done?
-            {:color :green})
+            {:color "#064d06"
+             :background "#8bf28b"})
           (when-not (or (intersecting? location)
                         (all-cells location))
-            {:background :yellow})
+            {:background "#ffff9d"})
           (when (error? location)
             {:background :pink
              :color :red
@@ -205,8 +207,17 @@
       {:style
        {:display :flex
         :align-items :center
-        :justify-content :space-between}}
-      [:h1 "Sudoku"]
+        :justify-content :space-between
+        :border-bottom "1px solid #eeeeee"
+        :margin-top 40
+        :margin-bottom 20}}
+      [:h1
+       {:style
+        {:margin 0
+         :color "#1c1c1e"
+         :font-size "3em"
+         :font-family "sans-serif"}}
+       "Sudoku"]
       [:div
        [:button
         {:disabled (empty? input) :on-click reset} "clear"]
@@ -224,8 +235,8 @@
          :height "60vh"
          :margin-right 20}}
        (when (and
-               (empty? error?)
-               (= (count completed?) 9))
+              (empty? error?)
+              (= (count completed?) 9))
          [:div
           {:style
            {:position :absolute
@@ -271,7 +282,8 @@
                 :color "#344861"
                 :font-size "3rem"}
                (when (completed? value)
-                 {:color :green})
+                 {:color :green
+                  :background "#8bf28b"})
                (when (= value selected)
                  {:font-weight :bold}))} value]))]]]]))
 
