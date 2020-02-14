@@ -1,13 +1,13 @@
 (ns sudoku.build
   (:require [clojure.java.io :as io]
+            [clojure.string :as s]
             [shadow.cljs.devtools.api :as shadow]))
 
 (defn -main []
   (binding [*out* *err*] (shadow/release :app))
   (println
-   (str
-    "<div id=\"root\"></div>"
-    "<script>"
-    (slurp "target/main.js")
-    "</script>")))
+   (s/replace
+    (slurp "resources/index.html")
+    "<script src=\"main.js\"></script>"
+    (str "<script>" (slurp "target/main.js") "</script>"))))
 
